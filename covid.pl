@@ -72,7 +72,7 @@ comorbidades(Nome):-
 responde(Nome):-
     gravidade(Nome, Char),
     !,
-    format('A gravidade de ~w é ~w',[Nome,Char]).
+    format('A condição de ~w é ~w',[Nome,Char]).
 continua(Resposta) :-
     format('~nContinua? [s/n] '),
     get_char(Resposta),
@@ -90,20 +90,20 @@ salva(Paciente,Arquivo):-
     told.
 
 gravidade(Nome, grave):-
-    paciente(Nome, freq_respiratoria,FreqResp), FreqResp > 30,
-    paciente(Nome, pa_sistolica,PaSis),PaSis < 90,
-    paciente(Nome, saturacao,Saturacao), Saturacao < 95,
+    paciente(Nome, freq_respiratoria,FreqResp), FreqResp > 30;
+    paciente(Nome, pa_sistolica,PaSis),PaSis < 90;
+    paciente(Nome, saturacao,Saturacao), Saturacao < 95;
     paciente(Nome, dispneia,TemDispneia), TemDispneia = "sim".
 
 gravidade(Nome, medio):-
-    paciente(Nome, temperatura,Temperatura), Temperatura > 39,
-    paciente(Nome, pa_sistolica,PaSis),PaSis >=90,PaSis =< 100,
-    paciente(Nome, idade,Idade), Idade > 80,
+    paciente(Nome, temperatura,Temperatura), Temperatura > 39;
+    paciente(Nome, pa_sistolica,PaSis),PaSis >=90,PaSis =< 100;
+    paciente(Nome, idade,Idade), Idade > 80;
     paciente(Nome, comorbidades,NumComorb), NumComorb > 1.
 
 gravidade(Nome, leve):-
-    paciente(Nome, temperatura,Temperatura), Temperatura < 35, (Temperatura >= 37, Temperatura =< 39),
-    paciente(Nome, freq_cardiaca,FreqCard),FreqCard > 100,
-    paciente(Nome, freq_respiratoria,FreqResp),FreqResp >= 19, FreqResp =< 30,
-    paciente(Nome, idade,Idade), Idade >= 60, Idade =< 79,
+    paciente(Nome, temperatura,Temperatura), (Temperatura < 35, (Temperatura >= 37, Temperatura =< 39));
+    paciente(Nome, freq_cardiaca,FreqCard),FreqCard > 100;
+    paciente(Nome, freq_respiratoria,FreqResp),FreqResp >= 19, FreqResp =< 30;
+    paciente(Nome, idade,Idade), Idade >= 60, Idade =< 79;
     paciente(Nome, comorbidades,NumComorb), NumComorb = 1.
