@@ -27,43 +27,43 @@ nome(Nome) :-
     format('~nQual o nome do paciente? '),
     gets(Nome).
 
-temperatura(Temperatura) :-
+temperatura(Nome) :-
     format('~nQual a temperatura de ~w? ', [Nome]),
     gets(Temperatura),
     asserta(paciente(Nome, temperatura, Temperatura)).
 
-freq_cardiaca(FreqCard):-
+freq_cardiaca(Nome):-
     format('~nQual a frequência cardíaca de ~w? ', [Nome]),
     gets(FreqCard),
     asserta(paciente(Nome, freq_cardiaca, FreqCard)).
 
 
-freq_respiratoria(FreqResp):-
+freq_respiratoria(Nome):-
     format('~nQual a frequência respiratória de ~w? ', [Nome]),
     gets(FreqResp),
     asserta(paciente(Nome, freq_respiratoria, FreqResp)).
 
-pa_sistolica(PaSis):-
+pa_sistolica(Nome):-
     format('~nQual a PA Sistólica de ~w? ', [Nome]),
     gets(PaSis),
     asserta(paciente(Nome, pa_sistolica, PaSis)).
 
-saturacao(Saturacao):-
+saturacao(Nome):-
     format('~nQual a saturação de ~w? ', [Nome]),
     gets(Saturacao),
     asserta(paciente(Nome, saturacao, Saturacao)).
 
-dispneia(TemDispneia):-
+dispneia(Nome):-
     format('~n~w tem dispnéia? ', [Nome]),
     gets(TemDispneia),
     asserta(paciente(Nome, dispneia, TemDispneia)).
 
-idade(Idade):-
+idade(Nome):-
     format('~nQual a idade de ~w? ', [Nome]),
     gets(Idade),
     asserta(paciente(Nome, idade, Idade)).
 
-comorbidades(NumComorb):-
+comorbidades(Nome):-
     format('~n~w possui quantas comorbidades? ', [Nome]),
     gets(NumComorb),
     asserta(paciente(Nome, comorbidades, NumComorb)).
